@@ -2,7 +2,7 @@
 
 int main(int argc, char const *argv[])
 {
-    int dez, arr;
+    int dez, arr, Size=0, r, p=0;
     char txt[100], abc[26], abc2[26];
     
     printf("Introduce el desfaze: ");
@@ -26,14 +26,27 @@ int main(int argc, char const *argv[])
     printf("Introduce el texto a codificar:");
     scanf("%s", txt);
 
-    for (int i = 0; i < 26; i++)
+    while (txt[Size] != '\0')
     {
-        if (txt[i]=abc[i])
-        {
-            txt[i]=abc2[i];
-        }
-        
+        Size++;
     }
-    printf("%c",txt[0]);
+    
+
+    for (int i = 0; i < Size; i++)
+    {
+        r=0;
+        while (txt[i] != abc[r])
+        {
+            r++;
+        }
+        txt[i]=abc2[r];
+    }
+    
+    for (int i = 0; i < Size; i++)
+    {
+        printf("%c",  txt[i]);
+    }
+    
+    
     return 0;
 }
