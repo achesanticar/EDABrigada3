@@ -91,7 +91,7 @@ int main(int argc, char const *argv[])
         {
             printf("%c",  txt[i]);
         }
-        printf("\n");
-    
+    printf("\n");
+    scanf("%d", dez);
     return 0;
 }
