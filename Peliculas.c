@@ -19,6 +19,11 @@ int main(int argc, char const *argv[])
     struct Peliculas *datos = NULL;
 
     base = fopen("base_datos.txt", "r");
+    if (base == NULL)
+        {
+            printf("Error abriendo archivo");
+            return 1;
+        }
 
     while (fgets(buff, 200, base) != NULL)
     {
@@ -26,6 +31,8 @@ int main(int argc, char const *argv[])
         sscanf(buff, "%d %s %s %d %s %f %f", &datos[n].pnum, datos[n].Titulo, datos[n].Director, &datos[n].Año, datos[n].Genero, &datos[n].Puntuacion, &datos[n].Duracion);
         n++;
     }
+
+    fclose(base);
 
     printf("--Base de datos de peliculas--\n");
     while (op != 0)
@@ -43,6 +50,8 @@ int main(int argc, char const *argv[])
             }
             
             printf("Nombre:");
+
+            fclose (base);
             break;
         
         case 2:
@@ -58,6 +67,7 @@ int main(int argc, char const *argv[])
         }
     }
     
+    free (datos);
     
     return 0;
 }
