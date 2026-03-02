@@ -49,7 +49,9 @@ int main(int argc, char const *argv[])
                 return 1;
             }
             
-            printf("Nombre:");
+            printf("Titulo:");
+            gets(datos[n].Titulo);
+            
 
             fclose (base);
             break;
@@ -57,7 +59,7 @@ int main(int argc, char const *argv[])
         case 2:
             for (int i = 0; i < n; i++)
             {
-                printf("%d-%s Dirigida por: %s en %d. Pelicula de %s, puntuacion de %f y duracion de %f", n+1, datos[n].Titulo, datos[n].Director, &datos[n].Año, datos[n].Genero, &datos[n].Puntuacion, &datos[n].Duracion);
+                printf("%d-%s Dirigida por: %s en %d. Pelicula de %s, puntuacion de %.1f y duracion de %.1f\n", i+1, datos[n].Titulo, datos[n].Director, &datos[n].Año, datos[n].Genero, &datos[n].Puntuacion, &datos[n].Duracion);
             }
             
             break;
