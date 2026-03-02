@@ -1,10 +1,11 @@
 #include <stdio.h>
 #include <string.h>
+#include <stdlib.h>
 
 struct Peliculas
 {
-    char Titulo[50], Director[50];
-    int Año, Genero, pnum;
+    char Titulo[50], Director[50], Genero[30];
+    int Año, pnum;
     float Puntuacion, Duracion;
 };
 
@@ -15,12 +16,14 @@ int main(int argc, char const *argv[])
     char buff[200];
     FILE* base;
 
+    struct Peliculas *datos = NULL;
+
     base = fopen("base_datos.txt", "r");
 
     while (fgets(buff, 200, base) != NULL)
     {
-        struct Peliculas n;
-        sscanf(buff, "%d %s %s %d %d %f %f", n.pnum, n.Titulo, n.Director, n.Año, n.Genero, n.Puntuacion, n.Duracion);
+        datos = realloc(datos, (n+1) * sizeof(struct Peliculas));
+        sscanf(buff, "%d %s %s %d %s %f %f", &datos[n].pnum, datos[n].Titulo, datos[n].Director, &datos[n].Año, datos[n].Genero, &datos[n].Puntuacion, &datos[n].Duracion);
         n++;
     }
 
@@ -40,6 +43,14 @@ int main(int argc, char const *argv[])
             }
             
             printf("Nombre:");
+            break;
+        
+        case 2:
+            for (int i = 0; i < n; i++)
+            {
+                printf("%d-%s Dirigida por: %s en %d. Pelicula de %s, puntuacion de %f y duracion de %f", n+1, datos[n].Titulo, datos[n].Director, &datos[n].Año, datos[n].Genero, &datos[n].Puntuacion, &datos[n].Duracion);
+            }
+            
             break;
         
         default:
