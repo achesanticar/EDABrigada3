@@ -5,6 +5,11 @@ int main(int argc, char const *argv[])
     int dez, arr, Size=0, r, p=0, option;
     char txt[100], abc[26], abc2[26];
 
+    for (int j = 0; j < 26; j++)
+        {
+            abc[j]='a'+j;
+        }
+
     printf("Elige una acciòn:\n1-Codificar un mensaje\n2-Decodificar un mensaje\n");
     scanf("%d", &option);
     switch (option)
@@ -12,11 +17,6 @@ int main(int argc, char const *argv[])
     case 1:
         printf("Introduce el desfaze: ");
         scanf("%d", &dez);
-
-        for (int j = 0; j < 26; j++)
-        {
-            abc[j]='a'+j;
-        }
 
         for (int j = 0; j < 26; j++)
         {
@@ -54,7 +54,36 @@ int main(int argc, char const *argv[])
         printf("\n");
     break;
     case 2:
-        printf("ya ahora si");
+        printf("Introduce el desfaze: ");
+        scanf("%d", &dez);
+
+        for (int j = 0; j < 26; j++)
+        {
+            abc2[j]='a'+j+dez;
+            if (j+dez>25)
+            {
+                arr=j+dez-26;
+                abc2[j]='a'+arr;
+            } 
+        }
+
+        printf("Introduce el texto a decodificar:");
+        scanf("%s", txt);
+
+        while (txt[Size] != '\0')
+        {
+            Size++;
+        }
+
+        for (int i = 0; i < Size; i++)
+        {
+            r=0;
+            while (txt[i] != abc2[r])
+            {
+                r++;
+            }
+            txt[i]=abc[r];
+
     break;
     default:
         printf("opcion invalida");
