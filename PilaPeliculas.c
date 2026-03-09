@@ -15,26 +15,33 @@ pelicula *crear_pila(pelicula *P) {
 }
 
 void push(pelicula *P) {
-    P->Cima++;
-    printf("Introduce el nombre de la pelicula: ");
-    fgets(P->Titulo[P->Cima], 100, stdin);
+    if (P->Cima == 9){printf("La pila esta llena");} 
+    else {
+        P->Cima++;
+        printf("Introduce el nombre de la pelicula: ");
+        getchar();
+        fgets(P->Titulo[P->Cima], 100, stdin);
+    } 
 }
 
 void pop(pelicula *P) {
-    printf("%s", P->Titulo[P->Cima]);
-    P->Cima--;
+    if (P->Cima == -1) {printf("La pila esta vacia\n");} 
+    else {      
+        printf("%s", P->Titulo[P->Cima]);
+        P->Cima--;
+    }
 }
 
 int main(int argc, char const *argv[])
 {
-    int c;
+    int c=1;
     pelicula *P1;
     P1 = crear_pila(P1);
 
-    printf("Elige una acción:\nPush-0\nPop-1\nSalir-2");
-    scanf("%d", &c);
     while (c != 2)
     {
+        printf("Elige una accion:\nPush-0\nPop-1\nSalir-2\n");
+        scanf("%d", &c);
         switch (c)
         {
         case 0:
