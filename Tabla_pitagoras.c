@@ -21,9 +21,7 @@ int main(int argc, char const *argv[])
     {
         for (int j = 0; j < Col; j++)
         {
-            i = (i == 0) ? 1 : i;
-            j = (j == 0) ? 1 : j;
-            tab[i][j] = j * i;
+            tab[i][j] = (j+1) * (i+1);
         }
     }
     
@@ -32,6 +30,11 @@ int main(int argc, char const *argv[])
         for (int j = 0; j < Col; j++)
         {
             printf("%d ", tab[i][j]);
+            if (tab[i][j] < 10)
+            {
+                printf(" ");
+            }
+            
         }
         printf("\n");
     }
