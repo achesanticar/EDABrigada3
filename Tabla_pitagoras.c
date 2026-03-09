@@ -10,22 +10,25 @@ int main(int argc, char const *argv[])
     printf("\nColumnas: ");
     scanf("%d", &Col);
 
-    tab = (int **)malloc(Col * sizeof(int**));
-    *tab= (int *)malloc(Ren * sizeof(int*));
-
-    for (int i = 0; i <= Col ; i++)
+    tab = (int **)malloc(Ren * sizeof(int*));
+    for (int i = 0; i < Ren; i++)
     {
-        for (int j = 0; j <= Ren; j++)
+            *tab= (int *)malloc(Col * sizeof(int));
+    }
+    
+    for (int i = 0; i < Ren ; i++)
+    {
+        for (int j = 0; j < Col; j++)
         {
-            tab[j][i] = j * i;
+            tab[i][j] = j * i;
         }
     }
     
-    for (int i = 0; i <= Col ; i++)
+    for (int i = 0; i < Ren ; i++)
     {
-        for (int j = 0; j <= Ren; j++)
+        for (int j = 0; j < Col; j++)
         {
-            printf("%d", tab[j][i]);
+            printf("%d ", tab[i][j]);
         }
         printf("\n");
     }
