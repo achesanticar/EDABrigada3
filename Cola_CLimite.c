@@ -25,15 +25,16 @@ void Enqueue(Cola *P, int a) {
     if (P->tail < P->max)
     {
         P->tail++;
+        P->Dato = realloc(P->Dato, P->tail);
         P->Dato[P->tail] = a;
     } else
     printf("Cola llena, operacion no disponible\n");    
 }
 
 void Dequeue(Cola *P) {
-    if (P->head > (-11 + P->max))
+    if (P->head <= P->tail)
     {
-        printf("%d \n", P->Dato[P->head]);
+        printf("-> %d \n", P->Dato[P->head]);
         P->head++;
         P->max++;
     } else
@@ -73,5 +74,7 @@ int main(int argc, char const *argv[])
         }
     }
     
+    free(P);
+    free(P->Dato);
     return 0;
 }
