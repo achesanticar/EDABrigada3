@@ -25,6 +25,7 @@ void Mostrar(Lista *P) {
         printf("Lista vacia\n");
     } else {
         Nodo *Leyendo;
+        Leyendo = P->head;
         printf("Playlist:\n");
         while (Leyendo != NULL)
         {
@@ -44,14 +45,14 @@ int Insertar(Lista *L, char *n, char *au, int a) {
         {
             N->next = NULL;
             L->head = N;
-            strcpy(n, N->name);
-            strcpy(au, N->autor);
+            strcpy(N->name, n);
+            strcpy(N->autor, au);
             N->anio = a;
         } else {
             N->next = L->head;
             L->head = N;
-            strcpy(n, N->name);
-            strcpy(au, N->autor);
+            strcpy(N->name, n);
+            strcpy(N->autor, au);
             N->anio = a;
         }
         return 1;
@@ -59,8 +60,9 @@ int Insertar(Lista *L, char *n, char *au, int a) {
     return 0;
 }
 
-char Buscar(Lista *L, char *C) {
+char* Buscar(Lista *L, char *C) {
     Nodo *Leyendo;
+    Leyendo = L->head;
     while (Leyendo != NULL)
     {
         if (strcmp(C, Leyendo->name) == 0)
@@ -93,7 +95,7 @@ int main(int argc, char const *argv[])
     Lista *Mi_lista;
     int opcion = 1, anio;
     char buffer1[50], buffer2[50];
-    Mi_lista = Inicializar_lista(Mi_lista);
+    Mi_lista = Inicializar_lista(NULL);
     printf("--Playlist manager 3000--\n");
     while (opcion != 0)
     {
@@ -102,12 +104,12 @@ int main(int argc, char const *argv[])
         switch (opcion)
         {
         case 1:
-            printf("\nNombre: \n");
+            printf("\nNombre: ");
             fgets(buffer1, 50, stdin);
-            printf("\n");
+            getchar();
             printf("Autor: ");
             fgets(buffer2, 50, stdin);
-            printf("\n");
+            getchar();
             printf("Año: ");
             scanf("%d", &anio);
             Insertar(Mi_lista, buffer1, buffer2, anio);
